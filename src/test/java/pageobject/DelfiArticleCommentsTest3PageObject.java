@@ -13,7 +13,7 @@ import pageobject.pages.HomePage;
 public class DelfiArticleCommentsTest3PageObject {
 
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
-    private  final  int ARTICLE_ID = 5;
+    private  final  int ARTICLE_ID = 4;
     private BaseFunc baseFunc;
 
     @Test
@@ -27,14 +27,15 @@ public class DelfiArticleCommentsTest3PageObject {
         HomePage homePage = new HomePage(baseFunc);
         homePage.acceptCoocies();
 
-        homePage.getTitle(ARTICLE_ID);
-        homePage.getCommentsCount = homePage.GetCommentsCount(ARTICLE_ID);
+       String homePageTitle = homePage.getTitle(ARTICLE_ID);
+       int homePageCommentsCount = homePage.GetCommentsCount(ARTICLE_ID);
 
-        homePage.openArticle(ARTICLE_ID);
+
+       ArticlePage articlePage = homePage.openArticle(ARTICLE_ID);
 
 //        //-------------------------ARTICLE PAGE----------------------------------------------------------
         String articlePageTitle = articlePage.getTitle();
-        int articlePageCommentsCount = articlePage.getCommentsCount()
+        int articlePageCommentsCount = articlePage.getCommentsCount();
 
         Assertions.assertEquals(homePageTitle, articlePageTitle, "Wrong title!");
         Assertions.assertEquals(homePageCommentsCount, articlePageCommentsCount, "Wrong comments count!");
@@ -51,13 +52,14 @@ public class DelfiArticleCommentsTest3PageObject {
 //        LOGGER.info("Title is: " + commentPageTitle + "and comments count is: " + commentPageRegistratedUsersCommentCount + commentPageAnonimUsersCommentCount);
 //
 //        Assertions.assertEquals(homePageTitle, commentPageTitle + " ", "Wrong title!");
-        Assertions.assertEquals(homePageCommentsCount, commentPageRegistratedUsersCommentCount + commentPageAnonimUsersCommentCount, "Wrong comments count!");
+//        Assertions.assertEquals(homePageCommentsCount, commentPageRegistratedUsersCommentCount + commentPageAnonimUsersCommentCount, "Wrong comments count!");
 
     }
 
 
     @AfterEach
     public void closeBrowser() {
+
         baseFunc.closeBrowser();
     }
 }

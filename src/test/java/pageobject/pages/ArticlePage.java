@@ -14,6 +14,7 @@ public class ArticlePage {
     public BaseFunc baseFunc;
 
     public  ArticlePage(BaseFunc baseFunc) {
+
         this.baseFunc = baseFunc;
     }
 
@@ -25,13 +26,13 @@ public class ArticlePage {
 
     public int getCommentsCount() {
         LOGGER.info("Getting article comments count");
-
         if (baseFunc.findElements(COMMENTS).isEmpty()) {
-            return 0;
         } else {
+
+        }
         String commentsCountToParse = baseFunc.getText(COMMENTS);
-            commentsCountToParse = commentsCountToParse.substring(1, commentsCountToParse.length() - 1);
-            return Integer.parseInt(commentsCountToParse);
+        commentsCountToParse = commentsCountToParse.substring(1, commentsCountToParse.length() - 1);
+        return Integer.parseInt(commentsCountToParse);
     }
 
     public void openCommentsPage() {

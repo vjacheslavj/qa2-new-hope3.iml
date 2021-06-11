@@ -49,7 +49,7 @@ public class BaseFunc {
 
     public List<WebElement> findElements(WebElement parent, By child) {
         LOGGER.info("Getting all child elements");
-        return  parent.findElements(child)
+        return  parent.findElements(child);
     }
 
 
@@ -59,13 +59,13 @@ public class BaseFunc {
     }
     public String getText (WebElement parent, By child) {
         LOGGER.info("Getting text for child element by locator");
-        wait.until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(parent, child));
-        return parent.findElement(child).getText(ExpectedConditions.presenceOfNestedElementLocatedBy(parent, child));
+        return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(parent, child)).getText();
+
     }
 
     public  String getText(By locator) {
         LOGGER.info("Getting text from web element");
-        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
 
     }
 

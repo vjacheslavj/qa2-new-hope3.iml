@@ -26,7 +26,7 @@ public class HomePage {
         baseFunc.click(ACCEPT_COOKIE_BTN);
     }
 
-    public WebElement getArticle(int id) {
+    public WebElement getArticleById(int id) {
         LOGGER.info("Getting article Nr. " + (id + 1));
         List<WebElement> articles = baseFunc.findElements(ARTICLE);
 
@@ -38,24 +38,27 @@ public class HomePage {
     }
 
     public String getTitle(int id) {
-        LOGGER.info("Getting ttile for article Nr:" + (id +1));
+        LOGGER.info("Getting tile for article Nr:" + (id +1));
         return  baseFunc.getText(getArticleById(id), TITLE);
 
     }
 
     public int GetCommentsCount(int id) {
-        LOGGER.info("Getting ttile for article Nr:" + (id + 1));
+        LOGGER.info("Getting comments count for article Nr:" + (id + 1));
 
-        if (baseFunc.findElements(getArticleById(id), COMMENTS). isEmpty()) {
+        if (baseFunc.findElements(getArticleById(id), COMMENTS).isEmpty()) {
             return 0;
-        } else {
+        }else {
+
+        }
         String commentsCountToParse = baseFunc.getText(getArticleById(id), COMMENTS);
         commentsCountToParse = commentsCountToParse.substring(1, commentsCountToParse.length() - 1);
         return Integer.parseInt(commentsCountToParse);
     }
-    public  void ArticlePage openArticle(int id) {
-        LOGGER.info("Opening article Nr. " + (id + 1));
+    public ArticlePage openArticle(int id) {
+        LOGGER.info("Opening article Nr. " + (id +1));
         baseFunc.click(getArticleById(id));
         return new ArticlePage(baseFunc);
     }
+
 }
