@@ -12,9 +12,9 @@ public class BaseFunc2 {
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
 
     WebDriver driver;
-    WebDriver wait;
+    WebDriverWait wait;
 
-    public BaseFunc2(){
+    public BaseFunc2() {
         LOGGER.info("Starting web browser");
         System.setProperty("webdriver.chrome.driver", "c://chromedriver.exe");
         driver = new ChromeDriver();
@@ -25,7 +25,7 @@ public class BaseFunc2 {
     public void openPage(String url) {
         LOGGER.info("Opening page by URL: " + url);
 
-        if (!url.startsWith("http://") && !url.startsWith("https://")){
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
             url = "http://" + url;
         }
         driver.get(url);
