@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.tvnet.ArticlePage;
 import pageobject.tvnet.BaseFunc2;
+import pageobject.tvnet.CommentPage;
 import pageobject.tvnet.HomePage;
 
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
 public class TvNetArticleCommentsTest {
 
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
-    private final int ARTICLE_ID = 3;
+    private final int ARTICLE_ID = 4;
 
     private BaseFunc2 baseFunc2;
 
@@ -82,13 +83,17 @@ public class TvNetArticleCommentsTest {
 //        driver.findElement(ARTICLE_PAGE_COMMENTS_BTN).click();
         articlePage.openCommentsPage();
         //-------------------------COMMENTS PAGE---------------------------------------------------------
+        CommentPage commentPage = new CommentPage(baseFunc2);
+
+        String commentPageTitle = CommentPage.getTitle();
+        int commentPageCommentCount = CommentPage.getCommentsCount();
 //        LOGGER.info("Getting article title and comments count");
 //        String commentPageTitle = driver.findElement(COMMENT_PAGE_TITLE).getText();
 //        int commentPageCommentCount = getCommentsCount(COMMENT_PAGE_COMMENTS);
 //        LOGGER.info("Title is: " + commentPageTitle + "and comments count is: " + commentPageCommentCount);
 //
-//        Assertions.assertEquals(homePageTitle, commentPageTitle + " " + "(" + homePageCommentsCount + ")", "Wrong title!");
-//        Assertions.assertEquals(homePageCommentsCount, commentPageCommentCount, "Wrong comments count!");
+        Assertions.assertEquals(homePageTitle, commentPageTitle + " " + "(" + homePageCommentsCount + ")", "Wrong title!");
+        Assertions.assertEquals(homePageCommentsCount, commentPageCommentCount, "Wrong comments count!");
 
     }
 
