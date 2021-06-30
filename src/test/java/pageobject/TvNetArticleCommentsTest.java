@@ -85,15 +85,15 @@ public class TvNetArticleCommentsTest {
         //-------------------------COMMENTS PAGE---------------------------------------------------------
         CommentPage commentPage = new CommentPage(baseFunc2);
 
-        String commentPageTitle = CommentPage.getTitle();
-        int commentPageCommentCount = CommentPage.getCommentsCount();
+    //1    String commentPageTitle = CommentPage.getTitle();
+    //1   int commentPageCommentCount = CommentPage.getCommentsCount();
 //        LOGGER.info("Getting article title and comments count");
 //        String commentPageTitle = driver.findElement(COMMENT_PAGE_TITLE).getText();
 //        int commentPageCommentCount = getCommentsCount(COMMENT_PAGE_COMMENTS);
 //        LOGGER.info("Title is: " + commentPageTitle + "and comments count is: " + commentPageCommentCount);
 //
-        Assertions.assertEquals(homePageTitle, commentPageTitle + " " + "(" + homePageCommentsCount + ")", "Wrong title!");
-        Assertions.assertEquals(homePageCommentsCount, commentPageCommentCount, "Wrong comments count!");
+    //1    Assertions.assertEquals(homePageTitle, commentPageTitle + " " + "(" + homePageCommentsCount + ")", "Wrong title!");
+    //1    Assertions.assertEquals(homePageCommentsCount, commentPageCommentCount, "Wrong comments count!");
 
     }
 
