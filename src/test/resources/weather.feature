@@ -11,11 +11,10 @@ Feature: Testing weather endpoint
 #    Then lon is 145.77
 #    And lat is -16.92
 
-    And weather is:
-      | id          | 802              |
-      | main        | Clouds           |
-      | description | scattered clouds |
-      | icon        | 03n              |
+    And weathers are:
+      | id  | main   | description      | icon |
+      | 802 | Clouds | scattered clouds | 03n
+
 
     And base is "stations"
 
@@ -41,7 +40,7 @@ Feature: Testing weather endpoint
       | type    | 1          |
       | id      | 8166       |
       | message | 0.2064     |
-      | country | "AU"       |
+      | country | AU         |
       | sunrise | 1485720272 |
       | sunset  | 1485766550 |
 
