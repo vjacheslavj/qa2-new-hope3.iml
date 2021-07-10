@@ -23,6 +23,7 @@ public class WeatherStepDefs {
 
     @Given("city ID: {long}")
     public void set_city_id(long cityId) {
+
         this.cityId = cityId;
     }
 
@@ -38,21 +39,72 @@ public class WeatherStepDefs {
         Assertions.assertEquals(coords.get("lat"), response.getCoord().getLat(), "Incorrect Coord lat");
     }
 
+    @Then("base is")
+    public void check_base() {
+
+    }
+
+    @Then("main is:")
+    public void check_main(Map<String, Double> main) {
+        Assertions.assertEquals(main.get("temp"), response.getMain().getTemp(), "Incorrect Main Temp ");
+        Assertions.assertEquals(main.get("pressure"), response.getMain().getPressure(), "Incorrect Main Pressure ");
+        Assertions.assertEquals(main.get("humidity"), response.getMain().getHumidity(), "Incorrect Main Humidity ");
+        Assertions.assertEquals(main.get("temp_min"), response.getMain().getTemp_min(), "Incorrect Main Temp_min ");
+        Assertions.assertEquals(main.get("temp_max"), response.getMain().getTemp_max(), "Incorrect Main Temp_max ");
+    }
+
+    @Then("visibility is")
+    public void check_visibility() {
+
+    }
+
+    @Then("wind is:")
+    public void check_wind(Map<String, Double> wind) {
+        Assertions.assertEquals(wind.get("speed"), response.getWind().getSpeed(), "Incorrect Wind Speed ");
+        Assertions.assertEquals(wind.get("deg"), response.getWind().getDeg(), "Incorrect Wind Deg ");
+    }
+
+    @Then("clouds are:")
+    public void check_clouds(Map<String, Double> clouds) {
+        Assertions.assertEquals(clouds.get("all"), response.getClouds().getAll(), "Incorrect Clouds All ");
+
+    }
+
+    @Then("dt is")
+    public void check_dt() {
+
+    }
+
     @Then("sys is:")
     public void check_sys(Map<String, String> params) {
-       Assertions.assertEquals(Integer.parseInt(params.get("type")), response.getSys().getType(), "Wrong type");
-       Assertions.assertEquals(Long.parseLong(params.get("id")), response.getSys().getId(), "Wrong  Id");
-       Assertions.assertEquals(Double.parseDouble(params.get("message")), response.getSys().getMessage(), "Wrong message");
-       Assertions.assertEquals(params.get("country"), response.getSys().getCountry(), "Wrong country");
-       Assertions.assertEquals(Long.parseLong(params.get("sunrise")), response.getSys().getSunset(), "Wrong sunrise");
-       Assertions.assertEquals(Long.parseLong(params.get("sunset")), response.getSys().getSunset(), "Wrong sunset");
+        Assertions.assertEquals(Integer.parseInt(params.get("type")), response.getSys().getType(), "Wrong type");
+        Assertions.assertEquals(Long.parseLong(params.get("id")), response.getSys().getId(), "Wrong  Id");
+        Assertions.assertEquals(Double.parseDouble(params.get("message")), response.getSys().getMessage(), "Wrong message");
+        Assertions.assertEquals(params.get("country"), response.getSys().getCountry(), "Wrong country");
+        Assertions.assertEquals(Long.parseLong(params.get("sunrise")), response.getSys().getSunset(), "Wrong sunrise");
+        Assertions.assertEquals(Long.parseLong(params.get("sunset")), response.getSys().getSunset(), "Wrong sunset");
 
 
         LocalDate date = Instant.ofEpochSecond(response.getSys().getSunrise()).atZone(ZoneId.systemDefault()).toLocalDate();
         System.out.println(date);
-      // response.getWeathers().get(0).
+        // response.getWeathers().get(0).
         LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochSecond(response.getSys().getSunrise()), ZoneId.systemDefault());
         System.out.println(dateTime);
+    }
+
+    @Then("id is")
+    public void check_id() {
+
+    }
+
+    @Then("name is")
+    public void check_name() {
+
+    }
+
+    @Then("cod is")
+    public void check_cod() {
+
     }
 
     @Then("weathers are:")
@@ -62,14 +114,14 @@ public class WeatherStepDefs {
         Assertions.assertEquals(weathers.size(), response.getWeathers().size(), "Wrong weathers");
 
         for (int i = 0; i < weathers.size(); i++) {
-           Map<String, String> expectedWeather = weathers.get(i);
-           Weather actualWeather = response.getWeathers().get(i);
+            Map<String, String> expectedWeather = weathers.get(i);
+            Weather actualWeather = response.getWeathers().get(i);
 
 
-           Assertions.assertEquals(Long.parseLong(expectedWeather.get("id")), actualWeather.getId(), "Wrong ...");
-           Assertions.assertEquals(expectedWeather.get("main"), actualWeather.getMain(), "Wrong ...");
-           Assertions.assertEquals(expectedWeather.get("description"), actualWeather.getDescription(), "Wrong ...");
-           Assertions.assertEquals(expectedWeather.get("icon"), actualWeather.getIcon(), "Wrong ...");
+            Assertions.assertEquals(Long.parseLong(expectedWeather.get("id")), actualWeather.getId(), "Wrong ...");
+            Assertions.assertEquals(expectedWeather.get("main"), actualWeather.getMain(), "Wrong ...");
+            Assertions.assertEquals(expectedWeather.get("description"), actualWeather.getDescription(), "Wrong ...");
+            Assertions.assertEquals(expectedWeather.get("icon"), actualWeather.getIcon(), "Wrong ...");
         }
     }
 }
