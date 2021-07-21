@@ -1,4 +1,4 @@
-package pageobject.tvnet;
+package pageobject.delfi.pages.tvnet;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

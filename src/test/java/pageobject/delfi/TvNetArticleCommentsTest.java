@@ -1,22 +1,14 @@
-package pageobject;
+package pageobject.delfi;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pageobject.tvnet.ArticlePage;
-import pageobject.tvnet.BaseFunc2;
-import pageobject.tvnet.CommentPage;
-import pageobject.tvnet.HomePage;
-
-import java.util.List;
+import pageobject.delfi.pages.tvnet.ArticlePage;
+import pageobject.delfi.pages.tvnet.BaseFunc2;
+import pageobject.delfi.pages.tvnet.CommentPage;
+import pageobject.delfi.pages.tvnet.HomePage;
 
 public class TvNetArticleCommentsTest {
 

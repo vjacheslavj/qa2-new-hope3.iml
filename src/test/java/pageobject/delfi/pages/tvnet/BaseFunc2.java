@@ -1,4 +1,4 @@
-package pageobject.pages;
+package pageobject.delfi.pages.tvnet;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,19 +11,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-
-public class BaseFunc {
+public class BaseFunc2 {
     private final Logger LOGGER = LogManager.getLogger(this.getClass());
 
     WebDriver driver;
     WebDriverWait wait;
 
-    public BaseFunc() {
+    public BaseFunc2() {
         LOGGER.info("Starting web browser");
         System.setProperty("webdriver.chrome.driver", "c://chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-
         wait = new WebDriverWait(driver, 10);
     }
 
@@ -33,7 +31,6 @@ public class BaseFunc {
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
             url = "http://" + url;
         }
-
         driver.get(url);
     }
 
@@ -42,31 +39,28 @@ public class BaseFunc {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    public void  click(WebElement element) {
+    public void click(WebElement element) {
         LOGGER.info("Clicking on web element");
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
-
-    public List<WebElement> findElements(WebElement parent, By child) {
-        LOGGER.info("Getting all child elements");
-        return  parent.findElements(child);
-    }
-
 
     public List<WebElement> findElements(By locator) {
         LOGGER.info("Getting list of elements by: " + locator);
         return driver.findElements(locator);
     }
-    public String getText (WebElement parent, By child) {
-        LOGGER.info("Getting text for child element by locator");
-        return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(parent, child)).getText();
 
+    public List<WebElement> findElements(WebElement parent, By child) {
+        LOGGER.info("Getting all child elements");
+        return parent.findElements(child);
+    }
+    public String getText(WebElement parent, By child) {
+        LOGGER.info("Getting rext for child element by locator");
+        return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(parent, child)).getText();
     }
 
-    public  String getText(By locator) {
+    public String getText(By locator) {
         LOGGER.info("Getting text from web element");
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
-
     }
 
     public void closeBrowser() {
