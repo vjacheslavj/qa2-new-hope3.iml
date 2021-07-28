@@ -22,7 +22,6 @@ Feature: Ticket reservation service check
 
     Then name appears in summary
     And price calculated is: 3600
-    And reservation number appears
 
     When we are pressing Book button
     And selecting seat number
